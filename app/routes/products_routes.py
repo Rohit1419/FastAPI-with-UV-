@@ -1,9 +1,9 @@
 from fastapi import APIRouter, Depends, Query
 from sqlalchemy.orm import Session
 from typing import List, Optional
-from config.database import get_db
-from controllers.product_controller import ProductController
-from schemas.product_schema import ProductResponse, ProductCreate, ProductUpdate
+from app.config.database import get_db
+from app.controllers.product_controller import ProductController
+from app.schema.product_schema import ProductResponse, ProductCreate, ProductUpdate
 
 router = APIRouter(
     prefix="/products",
@@ -48,13 +48,6 @@ async def update_product(
     return ProductController.update_product(db, product_id, product)
 
 
-@router.get("/category/{category_name}", response_model=List[ProductResponse], status_code=200)
-async def get_products_by_category(
-    category_name : str,
-    db : Session = Depends (get_db)
-):
-    products = ProductController.get_products_by_category(db, category_name)
-    return products
 
 @router.delete("/{product_id}", status_code=204)
 async def delete_product(

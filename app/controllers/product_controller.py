@@ -1,6 +1,6 @@
 from sqlalchemy.orm import Session
-from models.product_model import Product
-from schemas.product_schema import ProductCreate, ProductUpdate
+from app.models.product_model import Product
+from app.schema.product_schema import ProductCreate, ProductUpdate
 from typing import List, Optional
 from fastapi import HTTPException, status
 
@@ -31,6 +31,9 @@ class ProductController:
     
     @staticmethod
     def get_all_products(db:Session, skip:int=0, category : Optional[str]=None, limit:int=100) -> List[Product]:
+
+        if db.query(Product).count() == 0:
+            raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="No products available")
 
         products = db.query(Product).filter(Product.is_active == True)
 

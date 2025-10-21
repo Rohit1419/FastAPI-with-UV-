@@ -2,6 +2,8 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from app.config.database import engine
 from app.models import user_model, product_model
+from app.routes import products_routes
+
 
 
 # create tables 
@@ -30,6 +32,10 @@ async def  read_root():
 @app.get("/health")
 async def health_check():
     return {"status": "ok"}
+
+#Product Routes
+
+app.include_router(products_routes.router, prefix="/api/v1")
 
 
 
