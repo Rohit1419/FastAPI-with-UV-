@@ -1,4 +1,4 @@
-from sqlalchemy import Column, Integer, String, Float, DateTime , Text
+from sqlalchemy import Column, Integer, String, Float, DateTime , Text, Boolean
 from app.config.database import Base
 from sqlalchemy.sql import func
 
@@ -13,6 +13,7 @@ class Product(Base):
     quantity = Column(Integer, nullable= False, default=0),
     category = Column(String, nullable= True),
     image_url = Column(String, nullable= True),
+    is_active = Column(Boolean, default=True),
     created_at = Column(DateTime(timezone=True), server_default=func.now()),
     updated_at = Column(DateTime(timezone=True), onupdate=func.now()),
 

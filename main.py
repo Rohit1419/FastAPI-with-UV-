@@ -1,15 +1,26 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+from app.config.database import engine
+from app.models import user_model, product_model
 
 
-app = FastAPI()
+# create tables 
+
+product_model.Base.metadata.create_all(bind=engine)
+
+
+app = FastAPI(
+    title="FastAPI",
+    description="API for my Ecommerce Application",
+    version="1.0.0",
+)
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins = ["*"],
-    allow_credentials = True,
-    allow_methods = ["*"],
-    allow_headers = ["*"],
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
 )
 
 @app.get("/")
