@@ -195,7 +195,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## 📞 Contact
 
-Your Name - [rohitgite03@gmail.com](mailto:rohitgite03@gmail.com)
+Rohit Gite - [rohitgite03@gmail.com](mailto:rohitgite03@gmail.com)
 
 ---
 
