@@ -1,4 +1,4 @@
-# E-commerce API with FastAPI
+# CRUD Operations with FastAPI
 
 A professional e-commerce REST API built with FastAPI, SQLAlchemy, and SQLite. This project demonstrates modern Python backend development practices with proper project structure and CRUD operations.
 
